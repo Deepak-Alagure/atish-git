@@ -18,10 +18,10 @@ public class AtishApplication {
 			return new BCryptPasswordEncoder();
 		}
 		// 01.bean class will be created within the configaration class.
-	// 02.you also create this menthod in securityConfig class
+	// 02.you can also create this menthod in securityConfig class
 	// beacause there we use the config anotation.
 	//03. the questions arises that where did we used config annotation in this class(application class)
-	 //this class consists of inbuilt @config anotation
+	 //this class consists of inbuilt @config anotation in springBootApplication.
 
 
 }

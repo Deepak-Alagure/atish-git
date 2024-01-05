@@ -14,13 +14,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
@@ -40,8 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers(PUBLIC_URLS).permitAll()
                 .antMatchers(HttpMethod.GET, "/api/**").permitAll()
-                .antMatchers("/api/auth/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -54,4 +57,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
+
+    public static final String[] PUBLIC_URLS={
+            "/v3/api-docs",
+            "/api/auth/**",
+            "/v2/api-docs/**",
+            "/swagger-resources/**",
+            "/swagger-ui/**",
+            "/webjars/**"
+
+
+    };
 }

@@ -67,7 +67,7 @@ public class mainUtil {
 
         //HASH MAP example
 
-        List<Employee> name=Arrays.asList(new Employee("atish",5000),
+        List<Employee> name=Arrays.asList(new Employee("atish",5000),//30-09-2023
                 new Employee("chiru",6000),
                 new Employee("konda",5000),
                 new Employee("gangya",6000),

@@ -49,7 +49,7 @@ public final class Post {
     private String description;
 
     private String content;
-    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)//11-12 -2023
     private List<Comment> comments=new ArrayList<>();
  // @ one to many
     // etard eda speret work agtiti
