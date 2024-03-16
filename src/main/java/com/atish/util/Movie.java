@@ -26,6 +26,7 @@ public class Movie implements Comparable<Movie>{
 
     @Override
     public int compareTo(Movie o) {
+
         return this.name.compareTo(o.name);
     }
 }

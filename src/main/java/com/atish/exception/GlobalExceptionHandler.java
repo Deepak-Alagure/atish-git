@@ -19,7 +19,7 @@ public ResponseEntity<ErrorDetails> resourceNotFoundException(
         WebRequest webRequest
 ) {
 ErrorDetails errorDetails=new ErrorDetails(new Date(),exception.getMessage(),webRequest.getDescription(true));
-return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
 
     }
     @ExceptionHandler(Exception.class)

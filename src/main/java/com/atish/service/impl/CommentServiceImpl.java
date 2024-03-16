@@ -50,7 +50,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void deleteComment(long id) {
         commentRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("Comments not found by this id:"+id)
+                ()-> new ResourceNotFoundException("Comments not found by this id:"+id)
         );
       commentRepository.deleteById(id);
     }

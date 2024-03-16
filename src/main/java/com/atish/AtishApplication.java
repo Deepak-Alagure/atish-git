@@ -13,10 +13,10 @@ public class AtishApplication {
 		SpringApplication.run(AtishApplication.class, args);
 	}
 
-		@Bean
-		public PasswordEncoder passwordEncoder(){
-			return new BCryptPasswordEncoder();
-		}
+//		@Bean
+//		public PasswordEncoder passwordEncoder(){
+//			return new BCryptPasswordEncoder();
+//		}
 		// 01.bean class will be created within the configaration class.
 	// 02.you can also create this menthod in securityConfig class
 	// beacause there we use the config anotation.

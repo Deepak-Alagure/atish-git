@@ -2,10 +2,12 @@ package com.atish.controller;
 
 import com.atish.entity.Role;
 import com.atish.entity.User;
+import com.atish.payload.JWTAuthResponse;
 import com.atish.payload.LoginDto;
 import com.atish.payload.SignUpDto;
 import com.atish.repository.RoleRepository;
 import com.atish.repository.UserRepository;
+import com.atish.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,16 +34,21 @@ public class AuthController {
     private RoleRepository roleRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtTokenProvider tokenProvider;
     @PostMapping("/signin")
-    public ResponseEntity<String> authenticateUser(@RequestBody LoginDto
-                                                           loginDto){
-        Authentication authentication =
-                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                        loginDto.getUsernameOrEmail(), loginDto.getPassword()));
+    public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDto
+                                                                    loginDto){
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                loginDto.getUsernameOrEmail(), loginDto.getPassword()));
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User signed-in successfully!.",
-                HttpStatus.OK);
+        // get token form tokenProvider
+        String token = tokenProvider.generateToken(authentication);
+        return ResponseEntity.ok(new JWTAuthResponse(token));
     }
+
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto){
         // add check for username exists in a DB

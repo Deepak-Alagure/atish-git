@@ -7,7 +7,7 @@ public class mainUtil {
     public static void main(String[] args) {
 
 //        List<String>data= Arrays.asList("atish","adarsh","sumati","gols","abhi");
-//        List<String> newdata = data.stream().sorted().filter(x -> x.startsWith("a")).collect(Collectors.toList());
+      //  List<String> newdata = data.stream().sorted().filter(x -> x.startsWith("a")).collect(Collectors.toList());
 //System.out.print(newdata);
 
 
@@ -23,7 +23,7 @@ public class mainUtil {
 //        post1.setContent("kya bat kar raha he dick");
 //
 //        List<Post> posts = Arrays.asList(post1, post2);
-//        posts.stream().map(p -> mapToDto(p)).collect(Collectors.toList());
+ //       posts.stream().map(p -> mapToDto(p)).collect(Collectors.toList());
 //
 //        for ( Post post:posts) {
 //            System.out.println(post.getId());
@@ -59,11 +59,11 @@ public class mainUtil {
 //            System.out.println(m3.getYear());
 //        }
 
-//        List<Integer>c=Arrays.asList(10,50,45,7,8,9,44,88,66,91,57,8,26,35,44,7,85,95,4,5);
-//        Integer max = c.stream().max(Integer::compareTo).get();
-//        Integer min = c.stream().min(Integer::compareTo).get();
-//        System.out.println(min);
-//        System.out.println(max);
+        List<Integer>c=Arrays.asList(10,50,45,7,8,9,44,88,66,91,57,8,26,35,44,7,85,95,4,5);
+        Integer max = c.stream().max(Integer::compareTo).get();
+        Integer min = c.stream().min(Integer::compareTo).get();
+        System.out.println(min);
+        System.out.println(max);
 
         //HASH MAP example
 
@@ -83,7 +83,9 @@ public class mainUtil {
             for (Employee employee:value) {
                 System.out.println(employee.getName());
 
+
             }
+
         }
 
     }
